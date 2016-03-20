@@ -3,7 +3,7 @@ Web Applications
 
 The World-Wide Web is one of the main mechanisms by which computer applications are delivered to users. This course provides an introduction to the design of Web applications. Students learn the main technologies involved, and build web applications as part of homework assignments and group class projects. Prerequisite(s): course 12B and 12M. (General Education Code(s): PR-E (Practice: Collaborative Endeavor)).
 
-  HW1
+  HW1:
 
 Using the Image Blog example in the web2py book as a guideline, build a for-sale listing site in web2py. The data model is slightly more complex than in the Image Blog but not all that much.
 Requirements
@@ -44,7 +44,7 @@ How to enforce user login before adding a listing see in particular the section 
 Controller and Views
 To display the listing items and to add listings you can use SQLFORM.grid as described here.  It may be useful to also review the section Model-View-Controller in the web2py book.
 
-  HW2
+  HW2:
   
 For-Sale Listings
 Update your For-Sale Listings data model as follows:
