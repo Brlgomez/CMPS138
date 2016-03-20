@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+<div style="text-align:center">
+<h1>Item: {{=image.title}}</h1>
+<h5>Price: ${{=image.price}}</h5>
+<h5>Category: {{=image.category}}</h5>
+<img width="200px"
+     src="{{=URL('download', args=image.file)}}" />
+<h3>Date Posted: {{=image.date_posted}}</h3>
+<h4>Name: {{=image.name}}</h4>
+<h4>Contact Info: {{=image.contact}}</h4>
+</div>
+{{if len(comments):}}
+  <h2>Comments</h2><br /><p>
+  {{for post in comments:}}
+    <p>{{=post.author}} says <i>{{=post.body}}</i></p>
+  {{pass}}</p>
+{{else:}}
+  <h2>No comments posted yet</h2>
+{{pass}}
+<h2>Post a comment</h2>
+{{=form}}

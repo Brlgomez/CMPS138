@@ -1,0 +1,60 @@
+{{extend 'layout.html'}}
+<br></br>
+<br></br>
+<br></br>
+<style>
+body {
+    background-color: White;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<h1>For Sale</h1>
+<a href="post_item.html" target="_blank">Post a new item</a>
+<br></br>
+<a href="user_items.html" target="_blank">Edit items</a>
+<br></br>
+<ul>
+<form><input type="hidden" id="id" name="id" value="" /></form>
+    {{for image in images:}}
+    <h2><a href =show/{{=image.id}} target="_blank">{{=image.title}} for ${{=image.price}}</a></h2>
+    <!--h2>{{=LI(A(image.title, _href=URL("show", args=image.id)))}} for ${{=image.price}}</h2-->
+    <h4>Category: {{=image.category}}</h4>
+    Votes: <span id="image{{=image.id}}">{{=image.votes}}</span>
+
+    <span onclick="jQuery('#id').val('{{=image.id}}');
+       ajax('{{=URL('default', 'upvote')}}', ['id'], 'item{{=image.id}}');">▲</span>
+
+    <span onclick="jQuery('#id').val('{{=image.id}}');
+       ajax('{{=URL('default', 'downvote')}}', ['id'], 'image{{=image.id}}');">▼</span>
+
+    <br></br>
+    <a href=#{{=image.id}} data-rel="popup" data-position-to="window">
+        <img width="100px" src="{{=URL('download', args=image.file)}}" class="img-thumbnail"/>
+    <div data-role="popup" id={{=image.id}}>
+    <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <img src="{{=URL('download', args=image.file)}}"  alt="Skaret View">
+    </div>
+    {{if len(picture):}}
+        {{for morePictures in picture:}}
+            {{if morePictures.image_id == image.id:}}
+                <a href=#{{=morePictures.id}} data-rel="popup" data-position-to="window">
+                    <img width="100px" src="{{=URL('download', args=morePictures.file)}}" class="img-thumbnail"/>
+                <div data-role="popup" id={{=morePictures.id}}>
+                <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <img src="{{=URL('download', args=morePictures.file)}}" alt="Skaret View">
+                </div>
+            {{pass}}
+        {{pass}}
+    {{pass}}
+    <br></br>
+    ----------------------------------------------------------------
+{{pass}}
+</ul>
